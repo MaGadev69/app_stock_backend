@@ -6,6 +6,6 @@ from app.database import get_db
 
 router = APIRouter()
 
-@router.get("/productos", response_model=list[ProductoRead])
+@router.get("/", response_model=list[ProductoRead])
 def listar_productos(db: Session = Depends(get_db)):
     return get_productos(db)
