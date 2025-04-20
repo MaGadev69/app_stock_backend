@@ -1,0 +1,33 @@
+services:
+  backend:
+    build:
+      context: ./app_stock_backend
+    container_name: app_stock_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - ./app_stock_backend/.env
+    networks:
+      - appnet
+
+  db:
+    image: postgres:17
+    container_name: postgredb
+    restart: unless-stopped
+    env_file:
+      - ./app_stock_backend/.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - /home/ubuntu/postgres_data:/var/lib/postgresql/data
+    networks:
+      - appnet
+
+volumes:
+  pgdata:
+
+networks:
+  appnet:
