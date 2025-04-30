@@ -123,3 +123,19 @@ valor_anterior = NULL,
 valor_nuevo = 'pendiente',
 fecha = 'fecha',
 id_usuario = 'usuario'
+
+---
+
+## Flujo Normal - Factura Electrónica
+
+[Venta en el Sistema] 
+      ↓
+[Generar Comprobante]
+      ↓
+[Enviar a AFIP WebService]
+      ↓
+[AFIP responde OK → CAE recibido]
+      ↓
+[Factura Electrónica emitida]
+      ↓
+[Entrega al cliente (PDF/impresión)]

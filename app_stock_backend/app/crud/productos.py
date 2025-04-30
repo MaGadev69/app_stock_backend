@@ -6,6 +6,10 @@ from app.schemas.productos import ProductoCreate
 def get_productos(db: Session):
     return db.query(Producto).all()
 
+# Obtener cantidad de productos activos
+def contar_productos_activos(db: Session):
+    return db.query(Producto).filter(Producto.estado == "activo").count()
+
 # Obtener un producto por ID
 def get_producto(db: Session, producto_id: int):
     return db.query(Producto).filter(Producto.id_producto == producto_id).first()
