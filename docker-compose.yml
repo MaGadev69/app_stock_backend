@@ -24,7 +24,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - /home/ubuntu/postgres_data:/var/lib/postgresql/data
     networks:
       - appnet
 
