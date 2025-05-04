@@ -17,12 +17,14 @@ services:
     image: postgres:17
     container_name: postgredb
     restart: unless-stopped
-    env_file:
-      - ./app_stock_backend/.env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
-      - /home/ubuntu/postgres_data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     networks:
       - appnet
 
