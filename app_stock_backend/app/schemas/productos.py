@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from datetime import datetime
 
 class ProductoBase(BaseModel):
@@ -20,7 +20,9 @@ class ProductoRead(ProductoBase):
     id_producto: int
 
     class Config:
-        orm_mode = True
+        #orm_mode = True
+        #* 'orm_mode' has been renamed to 'from_attributes'
+        model_config = ConfigDict(from_attributes=True)
 
 # ProductoBase agrupa todos los campos comunes.
 
